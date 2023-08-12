@@ -84,6 +84,11 @@ while not game_over:
     # Game Over conditions
     if snake_pos[0] < 0 or snake_pos[0] >= width or snake_pos[1] < 0 or snake_pos[1] >= height:
         game_over = True
+    
+    # Check for self-collision
+    for segment in snake_body[1:]:
+        if segment == snake_pos:
+            game_over = True
 
     # Snake body growing mechanism
     snake_body.insert(0, list(snake_pos))
